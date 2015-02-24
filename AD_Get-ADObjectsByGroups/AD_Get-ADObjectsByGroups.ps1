@@ -61,8 +61,8 @@ foreach ($Group in $Groups) {
                 Write-Host " * User : $($user.Name) --> Enable"
             }
             else {
-                Write-Output " * $($user.Name) --> Disable" | Out-File $LogFile -Append
-                Write-Host " * $($user.Name) --> Disable"
+                Write-Output " * User : $($user.Name) --> Disable" | Out-File $LogFile -Append
+                Write-Host " * User : $($user.Name) --> Disable"
             }
 		}
         elseif($Member.ObjectClass -eq "group") {
