@@ -6,7 +6,7 @@
     .PARAMETER LogFilePath
         Specify your log file path. This path must end with a "\"
     .EXAMPLE
-        .\AD_Get-ADUserByGroup.ps1 -LogFilePath "C:\Logs\"
+        .\AD_Get-ADObjectsByGroup.ps1 -LogFilePath "C:\Logs\"
         This will create a new log file containing all AD Objects by AD Groups
     .NOTES
         Author : Sylver SCHORGEN
@@ -35,7 +35,7 @@ $Groups = Get-ADGroup -Filter "*"
 Write-Host "Ok !" -ForeGroundColor Green
 Write-Host
 Write-Host
-Write-Host "Getting all AD Users by AD Groups ..."
+Write-Host "Getting all AD Objects by AD Groups ..."
 Write-Host
 
 # Getting all AD Groups and writing them in a file and on the console
