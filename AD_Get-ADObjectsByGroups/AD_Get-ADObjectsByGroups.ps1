@@ -6,7 +6,7 @@
     .PARAMETER LogFilePath
         Specify your log file path. This path must end with a "\"
     .EXAMPLE
-        .\AD_Get-ADObjectsByGroup.ps1 -LogFilePath "C:\Logs\"
+        .\AD_Get-ADUserByGroup.ps1 -LogFilePath "C:\Logs\"
         This will create a new log file containing all AD Objects by AD Groups
     .NOTES
         Author : Sylver SCHORGEN
