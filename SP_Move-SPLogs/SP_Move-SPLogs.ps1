@@ -30,7 +30,7 @@ Write-Host
 Write-Host "Setting up initial variables ... " -NoNewLine
 
 # Load PSSnapin for SharePoint
-if((Get-PSSnapin "Microsoft.SharePoint.PowerShell") -eq $null)
+if((Get-PSSnapin "Microsoft.SharePoint.PowerShell" -ErrorAction SilentlyContinue) -eq $null)
 {
       Add-PSSnapin Microsoft.SharePoint.PowerShell
 }
