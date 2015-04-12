@@ -7,8 +7,8 @@
         Specify the location of the Windows Server 2012 or 2012R2 SXS folder.
         You can 
     .EXAMPLE
-        .\AD_Add-ADServiceAccounts.ps1 -SharePointOU "OU=SharePoint,OU=Service Accounts,OU=LAB,DC=lab,DC=local" -SQLOU "OU=SQL,OU=Service Accounts,OU=LAB,DC=lab,DC=local"
-        This will create all service accounts added in the xml file ServiceAccounts.xml. This file must be in the same folder as the script file.
+        .\OWA13_Install-ServerPrerequisites.ps1 -SXSFolder "D:\Sources\sxs"
+        This will install mandatory prerequisites for OWA 13 installation.
     .NOTES
         Author : Sylver SCHORGEN
         Blog : http://microsofttouch.fr/default/b/sylver
