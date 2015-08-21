@@ -28,10 +28,8 @@ Write-Host
 Write-Host
 Write-Host "Setting up initial variables ... " -NoNewLine
 
-$serverName = [system.environment]::MachineName
 $xmlFilePath = "UserAccounts.xml"
 $domain = [System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain().Name
-$server = "$serverName.$domain"
 
 Write-Host "Ok !" -ForeGroundColor Green
 Write-Host
@@ -63,17 +61,17 @@ foreach ($account in $file.UserAccounts.User) {
     if ($userExist -eq $null) {
 	    try {
 		    # User account creation
-		    New-ADUser -GivenName $firstname -Surname $lastname -DisplayName:$fullName -Name:$fullName -Path:$ou -SamAccountName:$userName -Server:$server -Type:"user" -UserPrincipalName:$upn
+		    New-ADUser -GivenName $firstname -Surname $lastname -DisplayName:$fullName -Name:$fullName -Path:$ou -SamAccountName:$userName -Type:"user" -UserPrincipalName:$upn
 
 		    # User account password assignment
-		    Set-ADAccountPassword -Identity:"CN=$fullName,$ou" -Reset:$null -Server:$server -NewPassword $securePassword
+		    Set-ADAccountPassword -Identity:"CN=$fullName,$ou" -Reset:$null -NewPassword $securePassword
 		
 		    # User account activation
-		    Enable-ADAccount -Identity:"CN=$fullName,$ou" -Server:$server
+		    Enable-ADAccount -Identity:"CN=$fullName,$ou"
 		
 		    # Setting up User account properties
-		    Set-ADAccountControl -Identity:"CN=$fullName,$ou" -AccountNotDelegated:$false -AllowReversiblePasswordEncryption:$false -CannotChangePassword:$true -DoesNotRequirePreAuth:$false -PasswordNeverExpires:$true -Server:$server -UseDESKeyOnly:$false
-		    Set-ADUser -Identity:"CN=$fullName,$ou" -ChangePasswordAtLogon:$false -Server:$server -SmartcardLogonRequired:$false
+		    Set-ADAccountControl -Identity:"CN=$fullName,$ou" -AccountNotDelegated:$false -AllowReversiblePasswordEncryption:$false -CannotChangePassword:$true -DoesNotRequirePreAuth:$false -PasswordNeverExpires:$true -UseDESKeyOnly:$false
+		    Set-ADUser -Identity:"CN=$fullName,$ou" -ChangePasswordAtLogon:$false -SmartcardLogonRequired:$false
 		
 		    Write-Host " -- Account $fullName successfully created !" -ForeGroundColor Green
 	    }
