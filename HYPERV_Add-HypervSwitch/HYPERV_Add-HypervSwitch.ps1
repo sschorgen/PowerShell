@@ -99,7 +99,7 @@ if($PrivateVSwitch -eq $True) {
     }
 }
 else {
-    Write-Host "No Private vSwitch was created because the parameter -PricateVSwitch is set to $False or is not set" -ForegroundColor Yellow
+    Write-Host "No Private vSwitch was created because the parameter -PrivateVSwitch is set to $False or is not set" -ForegroundColor Yellow
     Write-Host
 }
 #endregion
