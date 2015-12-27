@@ -100,9 +100,9 @@ if(($VMExists -eq $null) -and ($VHDExists -eq $null)) {
         Write-Host "Ok !" -ForeGroundColor Green
     }
     #Configuring processors if the parameter is set
-    if(($Processors -ne "") -and ($Processors -ne " ") -and ($Processors -ne $null)) {
+    if(($Processor -ne "") -and ($Processor -ne " ") -and ($Processor -ne $null)) {
         Write-Host " -- Setting up processors ... " -NoNewLine
-        Set-VM -ProcessorCount $Processor
+        Set-VM -Name $VMName -ProcessorCount $Processor
         Write-Host "Ok !" -ForeGroundColor Green
     }
     #Adding internal vSwitch if the parameter is set
