@@ -1,0 +1,6 @@
+IsoPath,VMName,Processors,VMMemoryMB,VHDSizeGB,VMGeneration,InternalvSwitchName,ExternalvSwitchName,PrivatevSwitchName,VHDPath
+"","SRV12R2-1",2,2048,30,2,"Internal vSwitch","External vSwitch","","C:\_\Hyper-V\VHD\SRV12R2-1-01-C.vhdx"
+"","SRV12R2-2",2,2048,30,2,"Internal vSwitch","External vSwitch","","C:\_\Hyper-V\VHD\SRV12R2-2-01-C.vhdx"
+"","SRV12R2-3",2,2048,30,2,"Internal vSwitch","External vSwitch","","C:\_\Hyper-V\VHD\SRV12R2-3-01-C.vhdx"
+"","SRV12R2-4",2,2048,30,2,"Internal vSwitch","External vSwitch","","C:\_\Hyper-V\VHD\SRV12R2-4-01-C.vhdx"
+"","SRV12R2-5",2,2048,30,2,"Internal vSwitch","External vSwitch","","C:\_\Hyper-V\VHD\SRV12R2-5-01-C.vhdx"
