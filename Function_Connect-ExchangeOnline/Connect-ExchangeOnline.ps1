@@ -21,7 +21,7 @@ Function Connect-ExchangeOnline {
 	
 	param (
 		[Parameter(Mandatory=$true)]
-		[string]$O365AdminLogin;
+		[string]$O365AdminLogin,
 		[Parameter(Mandatory=$true)]
 		[string]$O365AdminPassword
 	)
