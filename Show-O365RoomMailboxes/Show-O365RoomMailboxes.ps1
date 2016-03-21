@@ -1,4 +1,4 @@
-<#
+﻿<#
     .SYNOPSIS
         Show your hidden Exchange Online room mailboxes in the GAL
     .DESCRIPTION
