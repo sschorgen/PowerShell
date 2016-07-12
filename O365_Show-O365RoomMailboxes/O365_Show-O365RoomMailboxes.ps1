@@ -8,7 +8,7 @@
     .PARAMETER O365AdminPassword
         Specify the Office 365 Administrator password
     .EXAMPLE
-        .\Show-O365RoomMailboxes.ps1 -O365AdminLogin "admin@mytenant.onmicrosoft.com" -O365AdminPassword "MYPASSWORD"
+        .\O365_Show-O365RoomMailboxes.ps1 -O365AdminLogin "admin@mytenant.onmicrosoft.com" -O365AdminPassword "MYPASSWORD"
         This will show all your hidden room mailboxes in the GAL
     .NOTES
         Author : Sylver SCHORGEN
@@ -51,14 +51,14 @@ Try {
 }
 
 Write-Host
-Write-Host "Getting all resource mailboxes ... " -NoNewLine
+Write-Host "Getting all room mailboxes ... " -NoNewLine
 
 Try {
-	$Rooms = Get-Mailbox | Select Name,Alias,PrimarySmtpAddress,RecipientTypeDetails,HiddenFromAddressListsEnabled | Where {(($_.RecipientTypeDetails -eq 'EquipmentMailbox') -and ($_.HiddenFromAddressListsEnabled -eq $True))} -ErrorAction Stop
+	$Rooms = Get-Mailbox | Select Name,Alias,PrimarySmtpAddress,RecipientTypeDetails,HiddenFromAddressListsEnabled | Where {(($_.RecipientTypeDetails -eq 'RoomMailbox') -and ($_.HiddenFromAddressListsEnabled -eq $True))} -ErrorAction Stop
 	Write-Host "Ok !" -ForeGroundColor Green
     Write-Host
 } Catch {
-	Write-Host "Error getting all resource mailboxes !" -ForeGroundColor Red
+	Write-Host "Error getting all room mailboxes !" -ForeGroundColor Red
     Write-Host
 	
 	Remove-PSSession -Session $Session
@@ -68,7 +68,7 @@ Try {
 Try {
 	if($Rooms -ne $Null) {
 		Write-Host
-		Write-Host "Showing all your hidden resource mailboxes in GAL for all of your users ... " -NoNewLine
+		Write-Host "Showing all your hidden room mailboxes in GAL for all of your users ... " -NoNewLine
 		
 		foreach($Room in $Rooms) {
 			Get-Mailbox $Room.PrimarySmtpAddress | Set-Mailbox -HiddenFromAddressListsEnabled $False
@@ -78,7 +78,7 @@ Try {
 		Write-Host
 	}
 } Catch {
-	Write-Host "Error showing all resource mailboxes in GAL !" -ForeGroundColor Red
+	Write-Host "Error showing all room mailboxes in GAL !" -ForeGroundColor Red
     Write-Host
 	Exit
 }

@@ -1,15 +1,15 @@
 ﻿<#
     .SYNOPSIS
-        Hide your Exchange Online equipment mailboxes from the GAL
+        Hide your Exchange Online room mailboxes from the GAL
     .DESCRIPTION
-        Hide your Exchange Online equipment mailboxes from the GAL so they can't be used by your users
+        Hide your Exchange Online room mailboxes from the GAL so they can't be used by your users
     .PARAMETER O365AdminLogin
         Specify an Office 365 Administrator
     .PARAMETER O365AdminPassword
         Specify the Office 365 Administrator password
     .EXAMPLE
-        .\Hide-O365EquipmentMailboxes.ps1 -O365AdminLogin "admin@mytenant.onmicrosoft.com" -O365AdminPassword "MYPASSWORD"
-        This will hide all your equipment mailboxes from the GAL
+        .\O365_Hide-O365RoomMailboxes.ps1 -O365AdminLogin "admin@mytenant.onmicrosoft.com" -O365AdminPassword "MYPASSWORD"
+        This will hide all your room mailboxes from the GAL
     .NOTES
         Author : Sylver SCHORGEN
         Blog : http://microsofttouch.fr/default/b/sylver
@@ -51,14 +51,14 @@ Try {
 }
 
 Write-Host
-Write-Host "Getting all equipment mailboxes ... " -NoNewLine
+Write-Host "Getting all room mailboxes ... " -NoNewLine
 
 Try {
-	$Equipments = Get-Mailbox | Select Name,Alias,PrimarySmtpAddress,RecipientTypeDetails | Where {$_.RecipientTypeDetails -eq 'EquipmentMailbox'} -ErrorAction Stop
+	$Rooms = Get-Mailbox | Select Name,Alias,PrimarySmtpAddress,RecipientTypeDetails | Where {$_.RecipientTypeDetails -eq 'RoomMailbox'} -ErrorAction Stop
 	Write-Host "Ok !" -ForeGroundColor Green
     Write-Host
 } Catch {
-	Write-Host "Error getting all equipment mailboxes !" -ForeGroundColor Red
+	Write-Host "Error getting all room mailboxes !" -ForeGroundColor Red
     Write-Host
 	
 	Remove-PSSession -Session $Session
@@ -66,19 +66,19 @@ Try {
 }
 
 Try {
-	if($Equipments -ne $Null) {
+	if($Rooms -ne $Null) {
 		Write-Host
-		Write-Host "Hiding all equipment mailboxes from GAL ... " -NoNewLine
+		Write-Host "Hiding all room mailboxes from GAL ... " -NoNewLine
 		
-		foreach($Equipment in $Equipments) {
-			Get-Mailbox $Equipment.PrimarySmtpAddress | Set-Mailbox -HiddenFromAddressListsEnabled $True
+		foreach($Room in $Rooms) {
+			Get-Mailbox $Room.PrimarySmtpAddress | Set-Mailbox -HiddenFromAddressListsEnabled $True
 		}
 		
 		Write-Host "Ok !" -ForeGroundColor Green
 		Write-Host
 	}
 } Catch {
-	Write-Host "Error hiding all equipment mailboxes from GAL !" -ForeGroundColor Red
+	Write-Host "Error hiding all room mailboxes from GAL !" -ForeGroundColor Red
     Write-Host
 	Exit
 }

@@ -10,7 +10,7 @@ Function Connect-ExchangeOnline {
     .PARAMETER O365AdminPassword
         Specify the Office 365 Administrator password
     .EXAMPLE
-        .\Connect-ExchangeOnline.ps1 -O365AdminLogin "admin@mytenant.onmicrosoft.com" -O365AdminPassword "MYPASSWORD"
+        .\O365_Connect-ExchangeOnline.ps1 -O365AdminLogin "admin@mytenant.onmicrosoft.com" -O365AdminPassword "MYPASSWORD"
         This will connect you to your Exchange Online Tenant and load the Exchange Online Cmdlets
     .NOTES
         Author : Sylver SCHORGEN

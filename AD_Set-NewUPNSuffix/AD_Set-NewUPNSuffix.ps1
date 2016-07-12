@@ -16,7 +16,7 @@
         Specify the name of your domain controller
         This parameter is mandatory
     .EXAMPLE
-        .\Set-NewUPNSuffix.ps1 -OldUPNSuffix "contoso.local" -NewUPNSuffix "contoso.com" -UserOu "OU=Users,OU=Contoso,DC=contoso,DC=local" -DC "srv-ad.contoso.local"
+        .\AD_Set-NewUPNSuffix.ps1 -OldUPNSuffix "contoso.local" -NewUPNSuffix "contoso.com" -UserOu "OU=Users,OU=Contoso,DC=contoso,DC=local" -DC "srv-ad.contoso.local"
         This script change the UPN Suffix of all users in the OU Users. The old UPN Suffix was contoso.local and the new UPN is contoso.com
     .NOTES
 		This script must be used on a domain controller

@@ -10,7 +10,7 @@
     .PARAMETER CSVFilePath
         Specify a file path for the CSV that is going to be exported
     .EXAMPLE
-        .\Get-O365DLWithMembers.ps1 -O365AdminLogin "admin@mytenant.onmicrosoft.com" -O365AdminPassword "MYPASSWORD" -CSVFilePath "C:\_\myCsvFile.csv"
+        .\O365_Get-O365DLWithMembers.ps1 -O365AdminLogin "admin@mytenant.onmicrosoft.com" -O365AdminPassword "MYPASSWORD" -CSVFilePath "C:\_\myCsvFile.csv"
         This will export all my distribution groups in the CSV located here : C:\_\myCsvFile.csv
     .NOTES
         Author : Sylver SCHORGEN

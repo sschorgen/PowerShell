@@ -1,15 +1,15 @@
 ﻿<#
     .SYNOPSIS
-        Hide your Exchange Online room mailboxes from the GAL
+        Show your hidden Exchange Online room mailboxes in the GAL
     .DESCRIPTION
-        Hide your Exchange Online room mailboxes from the GAL so they can't be used by your users
+        Show your hidden Exchange Online room mailboxes in the GAL so they can be used by your users
     .PARAMETER O365AdminLogin
         Specify an Office 365 Administrator
     .PARAMETER O365AdminPassword
         Specify the Office 365 Administrator password
     .EXAMPLE
-        .\Hide-O365RoomMailboxes.ps1 -O365AdminLogin "admin@mytenant.onmicrosoft.com" -O365AdminPassword "MYPASSWORD"
-        This will hide all your room mailboxes from the GAL
+        .\O365_Show-O365RoomMailboxes.ps1 -O365AdminLogin "admin@mytenant.onmicrosoft.com" -O365AdminPassword "MYPASSWORD"
+        This will show all your hidden room mailboxes in the GAL
     .NOTES
         Author : Sylver SCHORGEN
         Blog : http://microsofttouch.fr/default/b/sylver
@@ -51,14 +51,14 @@ Try {
 }
 
 Write-Host
-Write-Host "Getting all room mailboxes ... " -NoNewLine
+Write-Host "Getting all resource mailboxes ... " -NoNewLine
 
 Try {
-	$Rooms = Get-Mailbox | Select Name,Alias,PrimarySmtpAddress,RecipientTypeDetails | Where {$_.RecipientTypeDetails -eq 'RoomMailbox'} -ErrorAction Stop
+	$Rooms = Get-Mailbox | Select Name,Alias,PrimarySmtpAddress,RecipientTypeDetails,HiddenFromAddressListsEnabled | Where {(($_.RecipientTypeDetails -eq 'EquipmentMailbox') -and ($_.HiddenFromAddressListsEnabled -eq $True))} -ErrorAction Stop
 	Write-Host "Ok !" -ForeGroundColor Green
     Write-Host
 } Catch {
-	Write-Host "Error getting all room mailboxes !" -ForeGroundColor Red
+	Write-Host "Error getting all resource mailboxes !" -ForeGroundColor Red
     Write-Host
 	
 	Remove-PSSession -Session $Session
@@ -68,17 +68,17 @@ Try {
 Try {
 	if($Rooms -ne $Null) {
 		Write-Host
-		Write-Host "Hiding all room mailboxes from GAL ... " -NoNewLine
+		Write-Host "Showing all your hidden resource mailboxes in GAL for all of your users ... " -NoNewLine
 		
 		foreach($Room in $Rooms) {
-			Get-Mailbox $Room.PrimarySmtpAddress | Set-Mailbox -HiddenFromAddressListsEnabled $True
+			Get-Mailbox $Room.PrimarySmtpAddress | Set-Mailbox -HiddenFromAddressListsEnabled $False
 		}
 		
 		Write-Host "Ok !" -ForeGroundColor Green
 		Write-Host
 	}
 } Catch {
-	Write-Host "Error hiding all room mailboxes from GAL !" -ForeGroundColor Red
+	Write-Host "Error showing all resource mailboxes in GAL !" -ForeGroundColor Red
     Write-Host
 	Exit
 }
