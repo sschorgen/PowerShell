@@ -36,7 +36,7 @@ try {
         $CurrentVM = (Get-AzureRMVM -Name $VM.Name -ResourceGroupName $ResourceGroupName -status).Statuses
         
         if($CurrentVM.DisplayStatus -eq "VM Running") {
-            Write-Output "$($VM.Name) is already on!"
+            Write-Output "$($VM.Name) is on!"
             Stop-AzureRMVM -Name $VM.Name -ResourceGroupName $ResourceGroupName -Force | Out-Null
             Write-Output "$($VM.Name) has been shutdown !"
         }
