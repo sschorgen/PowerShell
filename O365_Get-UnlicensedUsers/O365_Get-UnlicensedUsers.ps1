@@ -103,7 +103,7 @@ try {
 	Write-Host " Done !" -ForegroundColor Green
 }
 catch {
-	Write-Host " Error !" -ForegroundColor Red
+	Write-Host " Error setting up localized variables based on OS language for the CSV columns names !" -ForegroundColor Red
 }
 
 #endregion
@@ -122,7 +122,7 @@ try {
     
     Write-Host " Done !" -ForegroundColor Green
 }catch {
-    Write-Host " Error !" -ForegroundColor Red
+    Write-Host " Error connecting to your Office 365 tenant ! Verify your login and password and try again !" -ForegroundColor Red
 }
 
 #endregion
@@ -144,7 +144,7 @@ try{
     Write-Host " Done !" -ForegroundColor Green
 
 } catch {
-    Write-Host " Error !" -ForegroundColor Red
+    Write-Host " Error getting unlicensed users !" -ForegroundColor Red
 }
 
 try{
@@ -154,7 +154,7 @@ try{
 
     Write-Host " Done !" -ForegroundColor Green
 }catch {
-    Write-Host " Error !" -ForegroundColor Red
+    Write-Host " Error exporting the CSV file ! Please verify the path is correct and try again !" -ForegroundColor Red
 }
 
 
