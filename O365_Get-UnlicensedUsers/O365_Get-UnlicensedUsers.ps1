@@ -94,11 +94,11 @@ try {
 	    }
     }
 
-	Write-Debug "ComputerName variable value --> $ComputerName"
-	Write-Debug "OSLanguage variable value --> $OSLanguage"
-    Write-Debug "Name variable value --> $Name"
-    Write-Debug "UPN variable value --> $UPN"
-    Write-Debug "Licensed variable value --> $Licensed"
+	Write-Verbose "ComputerName variable value --> $ComputerName"
+	Write-Verbose "OSLanguage variable value --> $OSLanguage"
+    Write-Verbose "Name variable value --> $Name"
+    Write-Verbose "UPN variable value --> $UPN"
+    Write-Verbose "Licensed variable value --> $Licensed"
 
 	Write-Host " Done !" -ForegroundColor Green
 }
@@ -140,7 +140,7 @@ try{
     -and ($_.CloudExchangeRecipientDisplayType -ne 8)} `
     | Select @{Name=$UPN;Expression={$_.UserPrincipalName}},@{Name=$Name;Expression={$_.DisplayName}},@{Name=$Licensed;Expression={$_.isLicensed}}
     
-    Write-Debug "Number of unlicensed users --> $UnlicensedUsers.Count"
+    Write-Verbose "Number of unlicensed users --> $UnlicensedUsers.Count"
     Write-Host " Done !" -ForegroundColor Green
 
 } catch {
