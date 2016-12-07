@@ -1,0 +1,42 @@
+<Product>
+	<Prerequisites>
+	  <Prerequisite Name="Microsoft .NET Framework 4.6" Url="https://download.microsoft.com/download/C/3/A/C3A5200B-D33C-47E9-9D70-2F7C65DAAD94/NDP46-KB3045557-x86-x64-AllOS-ENU.exe" Permalink="http://go.microsoft.com/fwlink/?LinkId=528233" />
+	  <Prerequisite Name="Microsoft SQL Server 2012 Native Client" Url="http://download.microsoft.com/download/4/B/1/4B1E9B0E-A4F3-4715-B417-31C82302A70A/ENU/x64/sqlncli.msi" Permalink="http://go.microsoft.com/fwlink/?LinkId=622997" />
+	  <Prerequisite Name="Microsoft ODBC Driver 11 for SQL Server" Url="https://download.microsoft.com/download/5/7/2/57249A3A-19D6-4901-ACCE-80924ABEB267/1033/amd64/msodbcsql.msi" Permalink="https://www.microsoft.com/en-us/download/details.aspx?id=36434" />
+	  <Prerequisite Name="Microsoft Sync Framework Runtime v1.0 SP1 (x64)" Url="http://download.microsoft.com/download/E/0/0/E0060D8F-2354-4871-9596-DC78538799CC/Synchronization.msi" Permalink="http://go.microsoft.com/fwlink/?LinkID=224449" />
+	  <Prerequisite Name="Microsoft Identity Extensions" Url="http://download.microsoft.com/download/0/1/D/01D06854-CA0C-46F1-ADBA-EBF86010DCC6/rtm/MicrosoftIdentityExtensions-64.msi" Permalink="http://go.microsoft.com/fwlink/?LinkID=252368" />
+	  <Prerequisite Name="Microsoft Information Protection and Control Client 2.1" Url="http://download.microsoft.com/download/3/C/F/3CF781F5-7D29-4035-9265-C34FF2369FA2/setup_msipc_x64.exe" Permalink="http://go.microsoft.com/fwlink/?LinkID=544913" />
+	  <Prerequisite Name="Microsoft WCF Data Services 5.6" Url="http://download.microsoft.com/download/1/C/A/1CAA41C7-88B9-42D6-9E11-3C655656DAB1/WcfDataServices.exe" Permalink="http://go.microsoft.com/fwlink/?LinkId=320724" />
+	  <Prerequisite Name="Windows Server AppFabric" Url="http://download.microsoft.com/download/A/6/7/A678AB47-496B-4907-B3D4-0A2D280A13C0/WindowsServerAppFabricSetup_x64.exe" Permalink="http://go.microsoft.com/fwlink/?LinkId=235496" />
+	  <Prerequisite Name="CU Package 1 for Microsoft AppFabric 1.1 for Windows Server (KB2671763)" Url="http://download.microsoft.com/download/7/B/5/7B51D8D1-20FD-4BF0-87C7-4714F5A1C313/AppFabric1.1-RTM-KB2671763-x64-ENU.exe" Permalink="http://go.microsoft.com/fwlink/?LinkId=251471" />
+	  <Prerequisite Name="CU Package 7 for Microsoft AppFabric 1.1 for Windows Server (KB3092423)" Url="https://download.microsoft.com/download/F/1/0/F1093AF6-E797-4CA8-A9F6-FC50024B385C/AppFabric-KB3092423-x64-ENU.exe" Permalink="https://www.microsoft.com/en-us/download/confirmation.aspx?id=49171&amp;6B49FDFB-8E5B-4B07-BC31-15695C5A2143=1" />
+	  <Prerequisite Name="Update for Microsoft .NET Framework to disable RC4 in Transport Layer Security (KB2898850)" Url="http://download.microsoft.com/download/C/6/9/C690CC33-18F7-405D-B18A-0A8E199E531C/Windows8.1-KB2898850-x64.msu" Permalink="http://go.microsoft.com/fwlink/?LinkID=523853" />
+	  <Prerequisite Name="Visual C++ Redistributable Package for Visual Studio 2012" Url="http://download.microsoft.com/download/1/6/B/16B06F60-3B20-4FF2-B699-5E9B7962F9AE/VSU_4/vcredist_x64.exe" Permalink="http://go.microsoft.com/fwlink/?LinkId=627156"/>
+	  <!--<Prerequisite Name="Visual C++ Redistributable Package for Visual Studio 2013" Url="http://download.microsoft.com/download/2/E/6/2E61CFA4-993B-4DD4-91DA-3737CD5CD6E3/vcredist_x64.exe" Permalink="http://go.microsoft.com/fwlink/?LinkId=320713&amp;clcid=0x409"/>-->
+	  <Prerequisite Name="Visual C++ Redistributable Package for Visual Studio 2015" Url="http://download.microsoft.com/download/9/3/F/93FCF1E7-E6A4-478B-96E7-D4B285925B00/vc_redist.x64.exe" Permalink="http://go.microsoft.com/fwlink/?LinkId=623013"/>
+	</Prerequisites>
+    <CumulativeUpdates>
+	    <CumulativeUpdate Name="April 2016" Build="16.0.4366.1000" Url="https://download.microsoft.com/download/8/D/5/8D589BA9-3EA3-4AF8-A5D6-7BC4DE028531/sts2016-kb2920721-fullfile-x64-glb.exe" ExpandedFile="sts2016-kb2920721-fullfile-x64-glb.exe" />
+	    <CumulativeUpdate Name="May 2016" Build="16.0.4378.1000" Url="https://download.microsoft.com/download/1/D/2/1D2C38A0-4AE7-47B3-9365-F603CBF1F154/sts2016-kb3115088-fullfile-x64-glb.exe" ExpandedFile="sts2016-kb3115088-fullfile-x64-glb.exe" />
+	    <CumulativeUpdate Name="May 2016" Build="16.0.4378.1000" Url="https://download.microsoft.com/download/7/D/A/7DA2A7E4-1903-45DA-A1AF-1DF8E79CBABB/wssloc2016-kb2920690-fullfile-x64-glb.exe" ExpandedFile="wssloc2016-kb2920690-fullfile-x64-glb.exe" />
+	    <CumulativeUpdate Name="June 2016" Build="16.0.4393.1000" Url="https://download.microsoft.com/download/0/5/1/0513ABEE-BBD8-4D2F-985B-6E9A89D1C544/sts2016-kb3115181-fullfile-x64-glb.exe" ExpandedFile="sts2016-kb3115181-fullfile-x64-glb.exe" />
+	    <CumulativeUpdate Name="June 2016" Build="16.0.4393.1000" Url="https://download.microsoft.com/download/9/8/B/98B7A6ED-63C2-461C-A61B-9960B665D428/wssloc2016-kb3115184-fullfile-x64-glb.exe" ExpandedFile="wssloc2016-kb3115184-fullfile-x64-glb.exe" />
+	    <CumulativeUpdate Name="July 2016" Build="16.0.4405.1000" Url="https://download.microsoft.com/download/2/6/A/26A556BB-81B8-4946-98E7-60E3AEDEB841/sts2016-kb3115299-fullfile-x64-glb.exe" ExpandedFile="sts2016-kb3115299-fullfile-x64-glb.exe" />
+	    <CumulativeUpdate Name="July 2016" Build="16.0.4405.1000" Url="https://download.microsoft.com/download/6/B/F/6BF1076F-607F-422C-8048-0A6EA6D8E0D9/wssloc2016-kb3115304-fullfile-x64-glb.exe" ExpandedFile="wssloc2016-kb3115304-fullfile-x64-glb.exe" />
+	    <CumulativeUpdate Name="August 2016" Build="16.0.4417.1002" Url="https://download.microsoft.com/download/8/3/B/83BC75DB-CF74-45CF-B9BD-72888A0ED3F1/sts2016-kb3115437-fullfile-x64-glb.exe" ExpandedFile="sts2016-kb3115437-fullfile-x64-glb.exe" />
+	    <CumulativeUpdate Name="August 2016" Build="16.0.4417.1002" Url="https://download.microsoft.com/download/C/3/D/C3DB63B9-5A95-48F1-BDC4-6C57DAF93901/wssloc2016-kb3115441-fullfile-x64-glb.exe" ExpandedFile="wssloc2016-kb3115441-fullfile-x64-glb.exe" />
+	    <CumulativeUpdate Name="September 2016" Build="16.0.4432.1003" Url="https://download.microsoft.com/download/E/C/7/EC7986A3-4292-4B77-820C-473639468DC0/sts2016-kb3118289-fullfile-x64-glb.exe" ExpandedFile="sts2016-kb3118289-fullfile-x64-glb.exe" />
+	    <CumulativeUpdate Name="September 2016" Build="16.0.4432.1003" Url="https://download.microsoft.com/download/2/2/C/22CB2861-5D06-403C-A20C-5F490DC8919B/wssloc2016-kb3118295-fullfile-x64-glb.exe" ExpandedFile="wssloc2016-kb3118295-fullfile-x64-glb.exe" />
+	    <CumulativeUpdate Name="October 2016" Build="16.0.4444.1004" Url="https://download.microsoft.com/download/A/4/6/A464472A-68B0-41FB-A2EA-17F0F215142A/sts2016-kb3118372-fullfile-x64-glb.exe" ExpandedFile="sts2016-kb3118372-fullfile-x64-glb.exe" />
+	    <CumulativeUpdate Name="October 2016" Build="16.0.4444.1004" Url="https://download.microsoft.com/download/2/6/1/2615E33D-2266-449B-B0EB-E6265343D099/wssloc2016-kb3118376-fullfile-x64-glb.exe" ExpandedFile="wssloc2016-kb3118376-fullfile-x64-glb.exe" />
+	    <!--The November 2016 PU for SharePoint 2016 is also known as "Feature Pack 1"-->
+	    <CumulativeUpdate Name="November 2016" Build="16.0.4456.1002" Url="https://download.microsoft.com/download/9/0/F/90F0F093-8B7B-44F8-986D-5E9971CBED8B/sts2016-kb3127940-fullfile-x64-glb.exe" ExpandedFile="sts2016-kb3127940-fullfile-x64-glb.exe" />
+	    <CumulativeUpdate Name="November 2016" Build="16.0.4456.1002" Url="https://download.microsoft.com/download/4/F/6/4F675DC1-3F45-4C3B-8261-84F3CFE9BDF4/wssloc2016-kb3127942-fullfile-x64-glb.exe" ExpandedFile="wssloc2016-kb3127942-fullfile-x64-glb.exe" />
+	</CumulativeUpdates>
+	<LanguagePacks>
+		<LanguagePack Name="fr-fr" Url="https://download.microsoft.com/download/9/A/D/9ADBFA1E-C83D-4833-AD35-32970A981A83/serverlanguagepack.exe" />
+		<LanguagePack Name="en-us" Url="https://download.microsoft.com/download/9/F/8/9F86F455-3912-4873-A891-8C007CDBB66A/serverlanguagepack.exe" />
+		<LanguagePack Name="es-es" Url="https://download.microsoft.com/download/3/A/F/3AF9783E-5CA7-45EA-8CF8-1958D3F5C4FC/serverlanguagepack.exe" />
+		<LanguagePack Name="it-it" Url="https://download.microsoft.com/download/8/9/1/891F0DDA-578F-4181-ADDA-F5F71B90CCB2/serverlanguagepack.exe" />
+	</LanguagePacks>
+</Product>
