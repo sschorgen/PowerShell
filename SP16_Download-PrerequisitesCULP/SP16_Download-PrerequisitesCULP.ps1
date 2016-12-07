@@ -137,7 +137,8 @@ function Download-SP16Prerequisites {
 # Function used to download SharePoint 2016 cumulative updates
 function Download-SP16CU
 {
-    
+ 
+    $CUExists = $false   
     Write-Host "### DOWNLOADING SHAREPOINT 2016 CUMULATIVE UPDATES ###"
     
     foreach($CU in $Xml.Product.CumulativeUpdates.CumulativeUpdate) {
@@ -158,8 +159,6 @@ function Download-SP16CU
                 Write-Host " -- Downloading $File ..." -NoNewline
                 Write-Host " Already downloaded !" -ForegroundColor Yellow
             }
-        } else {
-            Write-Host " The CU you entered does not exist !" -ForegroundColor Yellow
         }
     }
     
@@ -191,10 +190,6 @@ function Download-SP16LP
                 Write-Host " -- Downloading $File ..." -NoNewline
                 Write-Host " Already downloaded !" -ForegroundColor Yellow
             }
-        } else {
-
-            Write-Host " The language pack you entered does not exist !" -ForegroundColor Yellow
-
         }
     }
     
