@@ -107,20 +107,29 @@ function Test-FoldersPath
 function Download-SP16Prerequisites {
 
     Write-Host "### DOWNLOADING SHAREPOINT 2016 PREREQUISITES ###"
+    $Item = ""
     
     foreach($Prerequisite in $Xml.Product.Prerequisites.Prerequisite) {
         $File = $Prerequisite.Url.Split('/')[-1]
         $FilePath = $PrerequisitesFolder + "\" + $File
         
         
-        if (!(Test-Path $FilePath)) {
+        if(!(Test-Path $FilePath)) {
                 Try {
-                    Write-Host " -- Downloading $File ..." -NoNewline
-                    Start-BitsTransfer -Source $Prerequisite.Url -Destination "$PrerequisitesFolder" -DisplayName "Downloading `'$file`' to $PrerequisitesFolder" -Priority Foreground -Description "From $($Prerequisite.Url)..." -RetryInterval 60 -RetryTimeout 3600 -ErrorVariable err
                     
                     if($File -eq "WcfDataServices.exe") {
-                        Rename-Item -Path $FilePath -NewName "WcfDataServices56.exe"
+                        $WCFFilePath = $PrerequisitesFolder + "\" + "WcfDataServices56.exe"
+                        $Item = Get-Item -Path $WCFFilePath -ErrorAction SilentlyContinue
                     }
+                    if($item -eq $null) {
+                        Write-Host " -- Downloading $File ..." -NoNewline
+                        Start-BitsTransfer -Source $Prerequisite.Url -Destination "$PrerequisitesFolder" -DisplayName "Downloading `'$file`' to $PrerequisitesFolder" -Priority Foreground -Description "From $($Prerequisite.Url)..." -RetryInterval 60 -RetryTimeout 3600 -ErrorVariable err
+
+                        if($File -eq "WcfDataServices.exe") {
+                            Rename-Item -Path $FilePath -NewName "WcfDataServices56.exe"
+                        }
+                    }
+                    
                     Write-Host " OK !" -ForegroundColor Green
                 } Catch {
                     Write-Host "Error downloading $File. Verify your Internet Connection and retry !" -ForegroundColor Red
@@ -149,18 +158,12 @@ function Download-SP16CU
         
             if (!(Test-Path $FilePath)) {
                 
-                if($File -eq "WcfDataServices.exe") {
-                    $WCFFilePath = $CUFolder + "\" + "WcfDataServices56.exe"
-                    $Item = Get-Item -Path $WCFFilePath
-                }
-                if($Item -eq $null) {
-                    Try {
+                Try {
                     Write-Host " -- Downloading $File ..." -NoNewline
                     Start-BitsTransfer -Source $CU.Url -Destination "$CUFolder" -DisplayName "Downloading `'$file`' to $CUFolder" -Priority Foreground -Description "From $($CU.Url)..." -RetryInterval 60 -RetryTimeout 3600 -ErrorVariable err
                     Write-Host " OK !" -ForegroundColor Green
-                    } Catch {
-                        Write-Host "Error downloading $File. Verify your Internet Connection and retry !" -ForegroundColor Red
-                    }
+                } Catch {
+                    Write-Host "Error downloading $File. Verify your Internet Connection and retry !" -ForegroundColor Red
                 }
 
             } else {
