@@ -148,13 +148,21 @@ function Download-SP16CU
             $FilePath = $CUFolder + "\" + $File
         
             if (!(Test-Path $FilePath)) {
-                Try {
+                
+                if($File -eq "WcfDataServices.exe") {
+                    $WCFFilePath = $CUFolder + "\" + "WcfDataServices56.exe"
+                    $Item = Get-Item -Path $WCFFilePath
+                }
+                if($Item -eq $null) {
+                    Try {
                     Write-Host " -- Downloading $File ..." -NoNewline
                     Start-BitsTransfer -Source $CU.Url -Destination "$CUFolder" -DisplayName "Downloading `'$file`' to $CUFolder" -Priority Foreground -Description "From $($CU.Url)..." -RetryInterval 60 -RetryTimeout 3600 -ErrorVariable err
                     Write-Host " OK !" -ForegroundColor Green
-                } Catch {
-                    Write-Host "Error downloading $File. Verify your Internet Connection and retry !" -ForegroundColor Red
+                    } Catch {
+                        Write-Host "Error downloading $File. Verify your Internet Connection and retry !" -ForegroundColor Red
+                    }
                 }
+
             } else {
                 Write-Host " -- Downloading $File ..." -NoNewline
                 Write-Host " Already downloaded !" -ForegroundColor Yellow
