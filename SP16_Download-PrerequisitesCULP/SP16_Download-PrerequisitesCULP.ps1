@@ -119,7 +119,7 @@ function Download-SP16Prerequisites {
                     Start-BitsTransfer -Source $Prerequisite.Url -Destination "$PrerequisitesFolder" -DisplayName "Downloading `'$file`' to $PrerequisitesFolder" -Priority Foreground -Description "From $($Prerequisite.Url)..." -RetryInterval 60 -RetryTimeout 3600 -ErrorVariable err
                     
                     if($File -eq "WcfDataServices.exe") {
-                        Rename-Item "WcfDataServices.exe" -NewName "WcfDataServices56.exe"
+                        Rename-Item -Path $FilePath -NewName "WcfDataServices56.exe"
                     }
                     Write-Host " OK !" -ForegroundColor Green
                 } Catch {

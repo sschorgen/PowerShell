@@ -14,6 +14,7 @@
         Author : Sylver SCHORGEN
         Blog : http://microsofttouch.fr/default/b/sylver
         Created : 04 mar. 2015
+        Updated : 07 dec. 2016
         @sylver_schorgen
 #>
 
@@ -73,7 +74,7 @@ foreach ($account in $file.ServiceAccounts.User) {
     if ($userExist -eq $null) {
 	    try {
 		    # Service account creation
-		    New-ADUser -DisplayName:$fullName -Name:$fullName -Path:$ou -SamAccountName:$userName -Server:$server -Type:"user" -UserPrincipalName:$upn
+		    New-ADUser -DisplayName:$fullName -Name:$fullName -Path:$ou -SamAccountName:$userName -Server:$server -Type:"user" -UserPrincipalName:$upn -Description $description
 		
 		    # Service account password assignment
 		    Set-ADAccountPassword -Identity:"CN=$fullName,$ou" -Reset:$null -Server:$server -NewPassword $securePassword
