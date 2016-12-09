@@ -124,11 +124,6 @@ function Download-OOS16LP
                 Try {
                     Write-Host " -- Downloading $File ..." -NoNewline
                     Start-BitsTransfer -Source $LP.Url -Destination "$LanguagePackFolder" -DisplayName "Downloading `'$file`' to $LanguagePackFolder" -Priority Foreground -Description "From $($LP.Url)..." -RetryInterval 60 -RetryTimeout 3600 -ErrorVariable err
-
-                    Set-Location $LanguagePackFolder
-                    Start-Process .\$File -Argumentlist "/extract:$LanguagePackFolder /Q" -Wait
-                    Remove-Item $FilePath
-
                     Write-Host " OK !" -ForegroundColor Green
                 } Catch {
                     Write-Host "Error downloading $File. Verify your Internet Connection and retry !" -ForegroundColor Red
