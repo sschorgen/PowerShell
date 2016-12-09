@@ -1,0 +1,13 @@
+<Product>
+	<Prerequisites>
+		<Prerequisite Name="Visual C++ Redistributable Packages for Visual Studio 2013" Url="https://download.microsoft.com/download/2/E/6/2E61CFA4-993B-4DD4-91DA-3737CD5CD6E3/vcredist_x64.exe" Permalink="https://www.microsoft.com/download/details.aspx?id=40784" />
+		<Prerequisite Name="Visual C++ Redistributable for Visual Studio 2015" Url="https://download.microsoft.com/download/9/3/F/93FCF1E7-E6A4-478B-96E7-D4B285925B00/vc_redist.x64.exe" Permalink="http://go.microsoft.com/fwlink/p/?LinkId=620071" />
+		<Prerequisite Name="Microsoft.IdentityModel.Extention.dll" Url="http://download.microsoft.com/download/0/1/D/01D06854-CA0C-46F1-ADBA-EBF86010DCC6/MicrosoftIdentityExtensions-64.msi" Permalink="http://go.microsoft.com/fwlink/p/?LinkId=620072" />
+	</Prerequisites>
+	<LanguagePacks>
+		<LanguagePack Name="fr-fr" Url="https://download.microsoft.com/download/C/A/9/CA9F6B25-786D-49A7-B176-D3376C147D34/wacserverlanguagepack.exe" Label="French" />
+		<LanguagePack Name="en-us" Url="https://download.microsoft.com/download/6/D/7/6D75C9CB-FFEE-48B0-9AA6-D03C74E3939E/wacserverlanguagepack.exe" Label="English (US)" />
+		<LanguagePack Name="es-es" Url="https://download.microsoft.com/download/E/3/D/E3D356CD-1E49-4DC2-B699-7348ACA6B09E/wacserverlanguagepack.exe" Label="Spanish" />
+		<LanguagePack Name="it-it" Url="https://download.microsoft.com/download/7/D/F/7DF07234-EF32-4981-9E5A-2F287441B4EB/wacserverlanguagepack.exe" Label="Italian" />
+	</LanguagePacks>
+</Product>
