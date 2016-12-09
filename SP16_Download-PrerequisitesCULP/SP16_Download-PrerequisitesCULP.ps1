@@ -113,23 +113,10 @@ function Download-SP16Prerequisites {
         $File = $Prerequisite.Url.Split('/')[-1]
         $FilePath = $PrerequisitesFolder + "\" + $File
         
-        
         if(!(Test-Path $FilePath)) {
                 Try {
-                    
-                    if($File -eq "WcfDataServices.exe") {
-                        $WCFFilePath = $PrerequisitesFolder + "\" + "WcfDataServices56.exe"
-                        $Item = Get-Item -Path $WCFFilePath -ErrorAction SilentlyContinue
-                    }
-                    if($item -eq $null) {
-                        Write-Host " -- Downloading $File ..." -NoNewline
-                        Start-BitsTransfer -Source $Prerequisite.Url -Destination "$PrerequisitesFolder" -DisplayName "Downloading `'$file`' to $PrerequisitesFolder" -Priority Foreground -Description "From $($Prerequisite.Url)..." -RetryInterval 60 -RetryTimeout 3600 -ErrorVariable err
-
-                        if($File -eq "WcfDataServices.exe") {
-                            Rename-Item -Path $FilePath -NewName "WcfDataServices56.exe"
-                        }
-                    }
-                    
+                    Write-Host " -- Downloading $File ..." -NoNewline
+                    Start-BitsTransfer -Source $Prerequisite.Url -Destination "$PrerequisitesFolder" -DisplayName "Downloading `'$file`' to $PrerequisitesFolder" -Priority Foreground -Description "From $($Prerequisite.Url)..." -RetryInterval 60 -RetryTimeout 3600 -ErrorVariable err
                     Write-Host " OK !" -ForegroundColor Green
                 } Catch {
                     Write-Host "Error downloading $File. Verify your Internet Connection and retry !" -ForegroundColor Red
@@ -193,6 +180,11 @@ function Download-SP16LP
                 Try {
                     Write-Host " -- Downloading $File ..." -NoNewline
                     Start-BitsTransfer -Source $LP.Url -Destination "$LanguagePackFolder" -DisplayName "Downloading `'$file`' to $LanguagePackFolder" -Priority Foreground -Description "From $($LP.Url)..." -RetryInterval 60 -RetryTimeout 3600 -ErrorVariable err
+
+                    Set-Location $LanguagePackFolder
+                    Start-Process .\$File -Argumentlist "/extract:$LanguagePackFolder /Q" -Wait
+                    Remove-Item $FilePath
+
                     Write-Host " OK !" -ForegroundColor Green
                 } Catch {
                     Write-Host "Error downloading $File. Verify your Internet Connection and retry !" -ForegroundColor Red

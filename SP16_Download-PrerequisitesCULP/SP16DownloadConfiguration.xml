@@ -34,9 +34,9 @@
 	    <CumulativeUpdate Name="November 2016" Build="16.0.4456.1002" Url="https://download.microsoft.com/download/4/F/6/4F675DC1-3F45-4C3B-8261-84F3CFE9BDF4/wssloc2016-kb3127942-fullfile-x64-glb.exe" ExpandedFile="wssloc2016-kb3127942-fullfile-x64-glb.exe" />
 	</CumulativeUpdates>
 	<LanguagePacks>
-		<LanguagePack Name="fr-fr" Url="https://download.microsoft.com/download/9/A/D/9ADBFA1E-C83D-4833-AD35-32970A981A83/serverlanguagepack.exe" />
-		<LanguagePack Name="en-us" Url="https://download.microsoft.com/download/9/F/8/9F86F455-3912-4873-A891-8C007CDBB66A/serverlanguagepack.exe" />
-		<LanguagePack Name="es-es" Url="https://download.microsoft.com/download/3/A/F/3AF9783E-5CA7-45EA-8CF8-1958D3F5C4FC/serverlanguagepack.exe" />
-		<LanguagePack Name="it-it" Url="https://download.microsoft.com/download/8/9/1/891F0DDA-578F-4181-ADDA-F5F71B90CCB2/serverlanguagepack.exe" />
+		<LanguagePack Name="fr-fr" Url="https://download.microsoft.com/download/9/A/D/9ADBFA1E-C83D-4833-AD35-32970A981A83/serverlanguagepack.exe" Label="French" />
+		<LanguagePack Name="en-us" Url="https://download.microsoft.com/download/9/F/8/9F86F455-3912-4873-A891-8C007CDBB66A/serverlanguagepack.exe" Label="English (US)" />
+		<LanguagePack Name="es-es" Url="https://download.microsoft.com/download/3/A/F/3AF9783E-5CA7-45EA-8CF8-1958D3F5C4FC/serverlanguagepack.exe" Label="Spanish" />
+		<LanguagePack Name="it-it" Url="https://download.microsoft.com/download/8/9/1/891F0DDA-578F-4181-ADDA-F5F71B90CCB2/serverlanguagepack.exe" Label="Italian" />
 	</LanguagePacks>
 </Product>
