@@ -11,6 +11,10 @@
         The path of the folder in which all the .exe, .msi and .msu will be downloaded
         This parameter is not mandatory. The default value is C:\_OOS16SOURCES"
         You must never write a "\" at the end of this folder path
+    .PARAMETER CumulativeUpdate
+        The CU you want to download
+        This parameter is not mandatory. You must enter the month of the CU you want to download
+        The default language pack downloaded is October 2016
     .PARAMETER Language
         The language pack you want to download
         This parameter is not mandatory. You must enter a value formatted like en-us or fr-fr
@@ -18,6 +22,7 @@
     .EXAMPLE
         .\OOS16_Download-PrerequisitesLP.ps1
         This will download Office Online Server 2016 prerequisistes in the folder C:\_OOS16SOURCES\Prerequisites
+        This will download Office Online Server 2016 cumulative update in the folder D:\_OOS16SOURCES\CU
         This will download Office Online Server 2016 language pack in the folder D:\_OOS16SOURCES\Languages
     .EXAMPLE
         .\OOS16_Download-PrerequisitesLP.ps1 -XmlFilePath "OOS16DownloadConfiguration.xml" -DestinationFolder "D:\_oos16" -Language "fr-fr"
@@ -27,6 +32,7 @@
         Author : Sylver SCHORGEN
         Blog : http://microsofttouch.fr/default/b/sylver
         Created : 09 dec. 2016
+        Updated : 13 dec. 2016
         @sylver_schorgen
 #>
 
@@ -37,12 +43,15 @@ param (
     [Parameter(Mandatory=$false)]
     [string] $DestinationFolder = "C:\_OOS16SOURCES",
     [Parameter(Mandatory=$false)]
-    [string] $Language = "fr-fr"
+    [string] $Language = "fr-fr",
+    [Parameter(Mandatory=$false)]
+    [string] $CumulativeUpdate = "October 2016"
 )
 
 
 [xml]$Xml = Get-Content $XmlFilePath
 $PrerequisitesFolder = $DestinationFolder + "\Prerequisites"
+$CUFolder = $DestinationFolder + "\CU"
 $LanguagePackFolder = $DestinationFolder + "\Languages"
 
 # Function used to verify the folder structure
@@ -69,6 +78,15 @@ function Test-FoldersPath
         Write-Host " already exists !" -ForegroundColor Yellow
     }
     
+    Write-Host " -- Folder $CUFolder ..." -NoNewline
+    
+    if(!(Test-Path $CUFolder)) {
+        New-Item -Path $CUFolder -ItemType Directory | Out-Null
+        Write-Host " has been created !" -ForegroundColor Green
+    } else {
+        Write-Host " already exists !" -ForegroundColor Yellow
+    }
+
     Write-Host " -- Folder $LanguagePackFolder ..." -NoNewline
     
     if(!(Test-Path $LanguagePackFolder)) {
@@ -108,6 +126,40 @@ function Download-OOS16Prerequisites {
     Write-Host ""
 }
 
+# Function used to download OOS 2016 cumulative updates
+function Download-OOS16CU
+{
+ 
+    $CUExists = $false   
+    Write-Host "### DOWNLOADING OFFICE ONLINE SERVER 2016 CUMULATIVE UPDATES ###"
+    
+    foreach($CU in $Xml.Product.CumulativeUpdates.CumulativeUpdate) {
+        
+        if($CU.Name -eq $CumulativeUpdate) {
+            $File = $CU.Url.Split('/')[-1]
+            $FilePath = $CUFolder + "\" + $File
+        
+            if (!(Test-Path $FilePath)) {
+                
+                Try {
+                    Write-Host " -- Downloading $File ..." -NoNewline
+                    Start-BitsTransfer -Source $CU.Url -Destination "$CUFolder" -DisplayName "Downloading `'$file`' to $CUFolder" -Priority Foreground -Description "From $($CU.Url)..." -RetryInterval 60 -RetryTimeout 3600 -ErrorVariable err
+                    Write-Host " OK !" -ForegroundColor Green
+                } Catch {
+                    Write-Host "Error downloading $File. Verify your Internet Connection and retry !" -ForegroundColor Red
+                }
+
+            } else {
+                Write-Host " -- Downloading $File ..." -NoNewline
+                Write-Host " Already downloaded !" -ForegroundColor Yellow
+            }
+        }
+    }
+    
+    Write-Host ""
+
+}
+
 # Function used to download Office Online Server 2016 language packs
 function Download-OOS16LP
 {
@@ -141,4 +193,5 @@ function Download-OOS16LP
 
 Test-FoldersPath
 Download-OOS16Prerequisites
+Download-OOS16CU
 Download-OOS16LP
