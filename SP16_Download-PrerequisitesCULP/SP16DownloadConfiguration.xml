@@ -29,9 +29,10 @@
 	    <CumulativeUpdate Name="September 2016" Build="16.0.4432.1003" Url="https://download.microsoft.com/download/2/2/C/22CB2861-5D06-403C-A20C-5F490DC8919B/wssloc2016-kb3118295-fullfile-x64-glb.exe" ExpandedFile="wssloc2016-kb3118295-fullfile-x64-glb.exe" />
 	    <CumulativeUpdate Name="October 2016" Build="16.0.4444.1004" Url="https://download.microsoft.com/download/A/4/6/A464472A-68B0-41FB-A2EA-17F0F215142A/sts2016-kb3118372-fullfile-x64-glb.exe" ExpandedFile="sts2016-kb3118372-fullfile-x64-glb.exe" />
 	    <CumulativeUpdate Name="October 2016" Build="16.0.4444.1004" Url="https://download.microsoft.com/download/2/6/1/2615E33D-2266-449B-B0EB-E6265343D099/wssloc2016-kb3118376-fullfile-x64-glb.exe" ExpandedFile="wssloc2016-kb3118376-fullfile-x64-glb.exe" />
-	    <!--The November 2016 PU for SharePoint 2016 is also known as "Feature Pack 1"-->
 	    <CumulativeUpdate Name="November 2016" Build="16.0.4456.1002" Url="https://download.microsoft.com/download/9/0/F/90F0F093-8B7B-44F8-986D-5E9971CBED8B/sts2016-kb3127940-fullfile-x64-glb.exe" ExpandedFile="sts2016-kb3127940-fullfile-x64-glb.exe" />
 	    <CumulativeUpdate Name="November 2016" Build="16.0.4456.1002" Url="https://download.microsoft.com/download/4/F/6/4F675DC1-3F45-4C3B-8261-84F3CFE9BDF4/wssloc2016-kb3127942-fullfile-x64-glb.exe" ExpandedFile="wssloc2016-kb3127942-fullfile-x64-glb.exe" />
+	    <CumulativeUpdate Name="December 2016" Build="16.0.4471.1000" Url="https://download.microsoft.com/download/D/0/4/D04FD356-E140-433E-94F6-472CF45FD591/sts2016-kb3128014-fullfile-x64-glb.exe" ExpandedFile="sts2016-kb3128014-fullfile-x64-glb.exe" />
+	    <CumulativeUpdate Name="December 2016" Build="16.0.4471.1000" Url="https://download.microsoft.com/download/6/5/B/65B840E6-A1C3-4C15-8E1A-988D491EB9AA/wssloc2016-kb3128017-fullfile-x64-glb.exe" ExpandedFile="wssloc2016-kb3128017-fullfile-x64-glb.exe" />
 	</CumulativeUpdates>
 	<LanguagePacks>
 		<LanguagePack Name="fr-fr" Url="https://download.microsoft.com/download/9/A/D/9ADBFA1E-C83D-4833-AD35-32970A981A83/serverlanguagepack.exe" Label="French" />

@@ -17,7 +17,7 @@
         The languages packs managed are fr-fr, en-us, es-es and it-it
     .PARAMETER CumulativeUpdate
         The CU of SharePoint 2016 you want to download
-        This parameter is not mandatory. The default value is November 2016
+        This parameter is not mandatory. The default value is December 2016
     .EXAMPLE
         .\SP16_Download-PrerequisitesCULP.ps1
         This will download SharePoint 2016 prerequisistes in the folder C:\_SP16SOURCES\Prerequisites
@@ -49,7 +49,7 @@ param (
     [Parameter(Mandatory=$false)]
     [string] $Language = "fr-fr",
     [Parameter(Mandatory=$false)]
-    [string] $CumulativeUpdate = "November 2016"
+    [string] $CumulativeUpdate = "December 2016"
 )
 
 
