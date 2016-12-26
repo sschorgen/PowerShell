@@ -7,6 +7,10 @@
         The path of the XML file containing the URLs for the prerequisites, CU and language pack
         This parameter is not mandatory. The default value is SP16DownloadConfiguration.xml
         The XML file must be in the same folder as SP16_Download-PrerequisitesCULP.ps1
+    .PARAMETER CSVFilePath
+        The path of the CSV file containing the URL of the latest AutoSPInstaller ZIP
+        This parameter is not mandatory. The default value is SP_DLAutoSPInstallerConfiguration.csv
+        The CSV file must be in the same folder as SP16_Download-PrerequisitesCULP.ps1
     .PARAMETER DestinationFolder
         The path of the folder in which all the .exe, .msi and .msu will be downloaded
         This parameter is not mandatory. The default value is C:\_SP16SOURCES"
@@ -20,23 +24,21 @@
         This parameter is not mandatory. The default value is December 2016
     .EXAMPLE
         .\SP16_Download-PrerequisitesCULP.ps1
-        This will download SharePoint 2016 prerequisistes in the folder C:\_SP16SOURCES\Prerequisites
-        This will download SharePoint 2016 November 2016 CU in the folder D:\_SP16SOURCES\CU
-        This will download SharePoint 2016 language pack in the folder D:\_SP16SOURCES\Languages
+        This will download AutoSPInstaller.zip and unzip it in C:\_SP16SOURCES\AutoSPInstaller
+        This will download SharePoint 2016 prerequisistes in the folder C:\_SP16SOURCES\AutoSPInstaller\SP\2016\SharePoint\Prerequisites
+        This will download SharePoint 2016 December 2016 CU in the folder C:\_SP16SOURCES\AutoSPInstaller\SP\2016\Updates
+        This will download SharePoint 2016 fr-fr language pack in the folder C:\_SP16SOURCES\AutoSPInstaller\SP\2016\LanguagePacks
     .EXAMPLE
         .\SP16_Download-PrerequisitesCULP.ps1 -XmlFilePath "SP16DownloadConfiguration.xml" -DestinationFolder "D:\_sp16" -Language "fr-fr" -CumulativeUpdate "November 2016"
-        This will download SharePoint 2016 prerequisistes in the folder D:\_sp16\Prerequisites
-        This will download SharePoint 2016 November 2016 CU in the folder D:\_sp16\CU
-        This will download SharePoint 2016 prerequisistes in the folder D:\_sp16\Prerequisites
-    .EXAMPLE
-        .\SP16_Download-PrerequisitesCULP.ps1 -XmlFilePath "SP16DownloadConfiguration.xml" -DestinationFolder "D:\_sp16" -CumulativeUpdate "November 2016"
-        This will download SharePoint 2016 prerequisistes in the folder D:\_sp16\Prerequisites
-        This will download SharePoint 2016 November 2016 CU in the folder D:\_sp16\CU
-        This will download SharePoint 2016 prerequisistes in the folder D:\_sp16\Prerequisites
+        This will download AutoSPInstaller.zip and unzip it in D:\_sp16\AutoSPInstaller
+        This will download SharePoint 2016 prerequisistes in the folder D:\_sp16\AutoSPInstaller\SP\2016\SharePoint\Prerequisites
+        This will download SharePoint 2016 November 2016 CU in the folder D:\_sp16\AutoSPInstaller\SP\2016\Updates
+        This will download SharePoint 2016 fr-fr language pack in the folder D:\_sp16\AutoSPInstaller\SP\2016\LanguagePacks
     .NOTES
         Author : Sylver SCHORGEN
         Blog : http://microsofttouch.fr/default/b/sylver
         Created : 07 dec. 2016
+        Updated : 26 dec. 2016
         @sylver_schorgen
 #>
 
@@ -44,6 +46,8 @@
 param (
     [Parameter(Mandatory=$false)]
     [string] $XmlFilePath = "SP16DownloadConfiguration.xml",
+    [Parameter(Mandatory=$false)]
+    [string] $CSVFilePath = "SP_DLAutoSPInstallerConfiguration.csv",
     [Parameter(Mandatory=$false)]
     [string] $DestinationFolder = "C:\_SP16SOURCES",
     [Parameter(Mandatory=$false)]
@@ -54,9 +58,82 @@ param (
 
 
 [xml]$Xml = Get-Content $XmlFilePath
-$PrerequisitesFolder = $DestinationFolder + "\Prerequisites"
-$CUFolder = $DestinationFolder + "\CU"
-$LanguagePackFolder = $DestinationFolder + "\Languages"
+$CSV = Import-CSV $CSVFilePath -Delimiter ";"
+$DownloadURL = $CSV.Link
+$DestinationFile = "$DestinationFolder\$($CSV.ExpandFile).zip"
+$UnzippedFolder = "$DestinationFolder\$($CSV.ExpandFile)"
+$PrerequisitesFolder = $UnzippedFolder + "\SP\2016\SharePoint\Prerequisites"
+$CUFolder = $UnzippedFolder + "\SP\2016\Updates"
+$LanguagePackFolder = $UnzippedFolder + "\SP\2016\LanguagePacks\$Language"
+
+#Function used to Download AutoSPInstaller from Codeplex
+Function Download-AutoSPInstaller {
+
+    param (
+        [Parameter(Mandatory=$false)]
+        [string] $CSVFilePath = "SP_DLAutoSPInstallerConfiguration.csv",
+        [Parameter(Mandatory=$false)]
+        [string] $DestinationFolder = "$env:USERPROFILE\Downloads"
+    )
+
+    Write-Host ""
+    Write-Host " -- Setting up varibles ... " -NoNewline
+
+    Write-Host " OK !" -ForegroundColor Green
+
+    Try{
+        if(!(Test-Path $DestinationFile)) {
+            Write-Host ""
+            Write-Host " -- Downloading AutoSPInstaller ... " -NoNewline
+
+            Invoke-WebRequest -Uri $DownloadURL -OutFile $DestinationFile
+        
+            Write-Host " OK !" -ForegroundColor Green
+        }
+
+        if(!(Test-Path "$UnzippedFolder")) {
+            Try {
+                Write-Host ""
+                Write-Host " -- Unzipping AutoSPInstaller Folders Structure ... " -NoNewline
+
+                Unzip-File -ZipFilePath "$DestinationFile" -DestinationPath "$UnzippedFolder"
+
+                Write-Host " OK !" -ForegroundColor Green
+            } Catch {
+                Write-Host "Error ! Verify AutoSPInstaller has been correctly downloaded !"
+            }
+        }
+
+        if((Test-Path "$UnzippedFolder\SP\2013")) {
+            Remove-Item -Path "$UnzippedFolder\SP\2013" -Force -Confirm:$false -Recurse
+        }
+        if((Test-Path "$UnzippedFolder\SP\2010")) {
+            Remove-Item -Path "$UnzippedFolder\SP\2010" -Force -Confirm:$false -Recurse
+        }
+
+
+    } Catch {
+        Write-Host "Error ! Verify your Internet connection !"
+    }
+
+    Remove-Item -Path $DestinationFile -Force -Confirm:$false
+
+}
+
+#Function used to unzip AutoSPInstaller.zip
+Function Unzip-File {
+
+    param (
+        [Parameter(Mandatory=$True)]
+        [string] $ZipFilePath,
+        [Parameter(Mandatory=$True)]
+        [string] $DestinationPath = "$env:USERPROFILE\Downloads"
+    )
+    
+    Add-Type -AssemblyName System.IO.Compression.FileSystem
+
+    [System.IO.Compression.ZipFile]::ExtractToDirectory($ZipFilePath, $DestinationPath)
+}
 
 # Function used to verify the folder structure
 function Test-FoldersPath
@@ -73,6 +150,9 @@ function Test-FoldersPath
         Write-Host " already exists !" -ForegroundColor Yellow
     }
     
+    Download-AutoSPInstaller
+
+    Write-Host ""
     Write-Host " -- Folder $PrerequisitesFolder ..." -NoNewline
     
     if(!(Test-Path $PrerequisitesFolder)) {
