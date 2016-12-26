@@ -86,7 +86,7 @@ Function Download-AutoSPInstaller {
             Write-Host ""
             Write-Host "Unzipping AutoSPInstaller Folders Structure ... " -NoNewline
 
-            Unzip-File -ZipFilePath "$DestinationFile" -DestinationPath "$DestinationFolder"
+            Unzip-File -ZipFilePath "$DestinationFile" -DestinationPath "$UnzippedFolder"
 
             Write-Host " OK !" -ForegroundColor Green
         } Catch {
