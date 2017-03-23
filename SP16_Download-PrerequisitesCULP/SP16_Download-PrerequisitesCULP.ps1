@@ -21,7 +21,7 @@
         The languages packs managed are fr-fr, en-us, es-es and it-it
     .PARAMETER CumulativeUpdate
         The CU of SharePoint 2016 you want to download
-        This parameter is not mandatory. The default value is December 2016
+        This parameter is not mandatory. The default value is the last CU
     .EXAMPLE
         .\SP16_Download-PrerequisitesCULP.ps1
         This will download AutoSPInstaller.zip and unzip it in C:\_SP16SOURCES\AutoSPInstaller
@@ -53,7 +53,7 @@ param (
     [Parameter(Mandatory=$false)]
     [string] $Language = "fr-fr",
     [Parameter(Mandatory=$false)]
-    [string] $CumulativeUpdate = "December 2016"
+    [string] $CumulativeUpdate = "March 2017"
 )
 
 
