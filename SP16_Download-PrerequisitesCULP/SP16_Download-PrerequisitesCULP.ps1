@@ -26,7 +26,7 @@
         .\SP16_Download-PrerequisitesCULP.ps1
         This will download AutoSPInstaller.zip and unzip it in C:\_SP16SOURCES\AutoSPInstaller
         This will download SharePoint 2016 prerequisistes in the folder C:\_SP16SOURCES\AutoSPInstaller\SP\2016\SharePoint\Prerequisites
-        This will download SharePoint 2016 December 2016 CU in the folder C:\_SP16SOURCES\AutoSPInstaller\SP\2016\Updates
+        This will download SharePoint 2016 last CU in the folder C:\_SP16SOURCES\AutoSPInstaller\SP\2016\Updates
         This will download SharePoint 2016 fr-fr language pack in the folder C:\_SP16SOURCES\AutoSPInstaller\SP\2016\LanguagePacks
     .EXAMPLE
         .\SP16_Download-PrerequisitesCULP.ps1 -XmlFilePath "SP16DownloadConfiguration.xml" -DestinationFolder "D:\_sp16" -Language "fr-fr" -CumulativeUpdate "November 2016"
@@ -53,7 +53,7 @@ param (
     [Parameter(Mandatory=$false)]
     [string] $Language = "fr-fr",
     [Parameter(Mandatory=$false)]
-    [string] $CumulativeUpdate = "March 2017"
+    [string] $CumulativeUpdate = "May 2017"
 )
 
 

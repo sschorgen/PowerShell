@@ -2,7 +2,7 @@
 	<Prerequisites>
 	  <Prerequisite Name="Microsoft .NET Framework 4.6" Url="https://download.microsoft.com/download/C/3/A/C3A5200B-D33C-47E9-9D70-2F7C65DAAD94/NDP46-KB3045557-x86-x64-AllOS-ENU.exe" Permalink="http://go.microsoft.com/fwlink/?LinkId=528233" />
 	  <Prerequisite Name="Microsoft SQL Server 2012 Native Client" Url="http://download.microsoft.com/download/4/B/1/4B1E9B0E-A4F3-4715-B417-31C82302A70A/ENU/x64/sqlncli.msi" Permalink="http://go.microsoft.com/fwlink/?LinkId=622997" />
-	  <Prerequisite Name="Microsoft ODBC Driver 11 for SQL Server" Url="https://download.microsoft.com/download/5/7/2/57249A3A-19D6-4901-ACCE-80924ABEB267/1033/amd64/msodbcsql.msi" Permalink="https://www.microsoft.com/en-us/download/details.aspx?id=36434" />
+	  <Prerequisite Name="Microsoft ODBC Driver 11 for SQL Server" Url="https://download.microsoft.com/download/5/7/2/57249A3A-19D6-4901-ACCE-80924ABEB267/ENU/x64/msodbcsql.msi" Permalink="https://www.microsoft.com/en-us/download/details.aspx?id=36434" />
 	  <Prerequisite Name="Microsoft Sync Framework Runtime v1.0 SP1 (x64)" Url="http://download.microsoft.com/download/E/0/0/E0060D8F-2354-4871-9596-DC78538799CC/Synchronization.msi" Permalink="http://go.microsoft.com/fwlink/?LinkID=224449" />
 	  <Prerequisite Name="Microsoft Identity Extensions" Url="http://download.microsoft.com/download/0/1/D/01D06854-CA0C-46F1-ADBA-EBF86010DCC6/rtm/MicrosoftIdentityExtensions-64.msi" Permalink="http://go.microsoft.com/fwlink/?LinkID=252368" />
 	  <Prerequisite Name="Microsoft Information Protection and Control Client 2.1" Url="http://download.microsoft.com/download/3/C/F/3CF781F5-7D29-4035-9265-C34FF2369FA2/setup_msipc_x64.exe" Permalink="http://go.microsoft.com/fwlink/?LinkID=544913" />
@@ -39,6 +39,11 @@
 	    <CumulativeUpdate Name="February 2017" Build="16.0.4498.1002" Url="https://download.microsoft.com/download/9/5/6/956E60C5-BF96-47BC-8AE5-2BDF180EF974/wssloc2016-kb3141517-fullfile-x64-glb.exe" ExpandedFile="wssloc2016-kb3141487-fullfile-x64-glb.exe" />
 		<CumulativeUpdate Name="March 2017" Build="16.0.4510.1001" Url="https://download.microsoft.com/download/A/8/7/A87F28F5-8677-4760-8801-B82F38083DD3/sts2016-kb3178672-fullfile-x64-glb.exe" ExpandedFile="sts2016-kb3141486-fullfile-x64-glb.exe" />
 	    <CumulativeUpdate Name="March 2017" Build="16.0.4510.1001" Url="https://download.microsoft.com/download/A/F/8/AF817268-9A98-41E1-8905-BF612C95779A/wssloc2016-kb3178675-fullfile-x64-glb.exe" ExpandedFile="wssloc2016-kb3141487-fullfile-x64-glb.exe" />
+	    <CumulativeUpdate Name="April 2017" Build="16.0.4522.1000" Url="https://download.microsoft.com/download/A/5/E/A5E25221-6919-490A-B2C4-45D2DCAF349C/sts2016-kb3178718-fullfile-x64-glb.exe" ExpandedFile="sts2016-kb3178718-fullfile-x64-glb.exe" />
+	    <CumulativeUpdate Name="April 2017" Build="16.0.4522.1000" Url="https://download.microsoft.com/download/B/D/8/BD8DA0BE-015C-445D-AC40-1F4494EF1703/wssloc2016-kb3178721-fullfile-x64-glb.exe" ExpandedFile="wssloc2016-kb3178721-fullfile-x64-glb.exe" />
+	    <CumulativeUpdate Name="May 2017" Build="16.0.4534.1000" Url="https://download.microsoft.com/download/B/D/3/BD3DAAF6-72E5-4D60-858A-F5F84D5830A9/sts2016-kb3191880-fullfile-x64-glb.exe" ExpandedFile="sts2016-kb3191880-fullfile-x64-glb.exe" />
+	    <CumulativeUpdate Name="May 2017" Build="16.0.4534.1000" Url="https://download.microsoft.com/download/0/6/A/06AE142B-F60D-4B06-8242-03D1C2A2A885/wssloc2016-kb3191884-fullfile-x64-glb.exe" ExpandedFile="wssloc2016-kb3191884-fullfile-x64-glb.exe" />
+
 	</CumulativeUpdates>
 	<LanguagePacks>
 		<LanguagePack Name="fr-fr" Url="https://download.microsoft.com/download/9/A/D/9ADBFA1E-C83D-4833-AD35-32970A981A83/serverlanguagepack.exe" Label="French" />
