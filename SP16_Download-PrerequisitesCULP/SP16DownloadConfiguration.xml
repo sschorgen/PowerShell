@@ -43,7 +43,12 @@
 	    <CumulativeUpdate Name="April 2017" Build="16.0.4522.1000" Url="https://download.microsoft.com/download/B/D/8/BD8DA0BE-015C-445D-AC40-1F4494EF1703/wssloc2016-kb3178721-fullfile-x64-glb.exe" ExpandedFile="wssloc2016-kb3178721-fullfile-x64-glb.exe" />
 	    <CumulativeUpdate Name="May 2017" Build="16.0.4534.1000" Url="https://download.microsoft.com/download/B/D/3/BD3DAAF6-72E5-4D60-858A-F5F84D5830A9/sts2016-kb3191880-fullfile-x64-glb.exe" ExpandedFile="sts2016-kb3191880-fullfile-x64-glb.exe" />
 	    <CumulativeUpdate Name="May 2017" Build="16.0.4534.1000" Url="https://download.microsoft.com/download/0/6/A/06AE142B-F60D-4B06-8242-03D1C2A2A885/wssloc2016-kb3191884-fullfile-x64-glb.exe" ExpandedFile="wssloc2016-kb3191884-fullfile-x64-glb.exe" />
-
+		<CumulativeUpdate Name="June 2017" Build="16.0.4549.1000" Url="https://download.microsoft.com/download/E/E/4/EE4C0711-C9C5-48FF-8DCF-9FCC151A1125/sts2016-kb3203432-fullfile-x64-glb.exe" ExpandedFile="sts2016-kb3203432-fullfile-x64-glb.exe" />
+		<CumulativeUpdate Name="June 2017" Build="16.0.4549.1000" Url="https://download.microsoft.com/download/2/5/9/259A2087-FF9C-434C-8622-DE17DDDC632D/wssloc2016-kb3203433-fullfile-x64-glb.exe" ExpandedFile="wssloc2016-kb3203433-fullfile-x64-glb.exe" />
+	    <CumulativeUpdate Name="July 2017" Build="16.0.4561.1000" Url="https://download.microsoft.com/download/0/A/1/0A142E69-2B5D-4E49-90D3-8A6E7CD2F2B5/sts2016-kb3213544-fullfile-x64-glb.exe" ExpandedFile="sts2016-kb3213544-fullfile-x64-glb.exe" />
+		<CumulativeUpdate Name="July 2017" Build="16.0.4561.1000" Url="https://download.microsoft.com/download/2/A/E/2AED8CD5-193F-4526-BD30-D43EF77A729B/wssloc2016-kb3213543-fullfile-x64-glb.exe" ExpandedFile="wssloc2016-kb3213543-fullfile-x64-glb.exe" />
+		<CumulativeUpdate Name="August 2017" Build="16.0.4573.1002" Url="https://download.microsoft.com/download/5/A/D/5AD38E0C-641A-44BA-AFFC-8E65D69A2C93/sts2016-kb4011049-fullfile-x64-glb.exe" ExpandedFile="sts2016-kb4011049-fullfile-x64-glb.exe" />
+		<CumulativeUpdate Name="August 2017" Build="16.0.4573.1002" Url="https://download.microsoft.com/download/2/C/0/2C0D85B0-158F-459B-8807-AB77D8BE0923/wssloc2016-kb4011053-fullfile-x64-glb.exe" ExpandedFile="wssloc2016-kb4011053-fullfile-x64-glb.exe" />
 	</CumulativeUpdates>
 	<LanguagePacks>
 		<LanguagePack Name="fr-fr" Url="https://download.microsoft.com/download/9/A/D/9ADBFA1E-C83D-4833-AD35-32970A981A83/serverlanguagepack.exe" Label="French" />
