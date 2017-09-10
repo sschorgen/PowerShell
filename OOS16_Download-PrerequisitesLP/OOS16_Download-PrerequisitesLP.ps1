@@ -45,7 +45,7 @@ param (
     [Parameter(Mandatory=$false)]
     [string] $Language = "fr-fr",
     [Parameter(Mandatory=$false)]
-    [string] $CumulativeUpdate = "October 2016"
+    [string] $CumulativeUpdate = "July 2017"
 )
 
 
