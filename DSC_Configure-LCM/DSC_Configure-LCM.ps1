@@ -21,13 +21,14 @@
 
 Configuration ConfigureLCM
 {
+
+    param
+    (
+        [Parameter(Mandatory=$True)][string]$MofFilePath
+    )
+
     Node localhost
-    {
-        param
-        (
-            [Parameter(Mandatory=$True)][string]$MofFilePath
-        )
-        
+    {   
         File DSCFolder
         {
             Type = 'Directory'
@@ -47,7 +48,7 @@ Configuration ConfigureLCM
 
 <# EXECUTION EXAMPLE
 
-    ConfigureLCM -MofFilePath "C:\_DSC" -OutputPath "C:\_DSC"
+    ConfigureLCM -MofFilePath "C:\_DSC" -OutputPath "C:\_DSC\ConfigureLCM"
     Set-DscLocalConfigurationManager -Force -Verbose -Path "C:\_DSC\ConfigureLCM"
 
 #>
