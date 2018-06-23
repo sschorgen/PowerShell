@@ -53,7 +53,7 @@ function Get-O365Domains {
 
     Write-Host " -- Récupération de tous les domaines ... " -NoNewline
 
-    $Domains = Get-MsolDomain | Select-Object Name, Status, Authentication, VerificationMethod
+    $Domains = Get-MsolDomain | Select-Object Name, Status, Authentication, VerificationMethod | Sort-Object -Property Name
 
     $ReturnedDomains = @()
 
@@ -93,7 +93,7 @@ function Get-O365Users {
     
     Write-Host " -- Récupération de tous les utilisateurs ... " -NoNewline
 
-    $Users = Get-MSOLUser | Select-Object Lastname,Firstname,Licenses,SignInName,UserPrincipalName,MSExchRecipientTypeDetails | Where-Object {$_.MSExchRecipientTypeDetails -eq 1}
+    $Users = Get-MSOLUser | Select-Object Lastname,Firstname,Licenses,SignInName,UserPrincipalName,MSExchRecipientTypeDetails | Where-Object {$_.MSExchRecipientTypeDetails -eq 1} | Sort-Object -Property Lastname
     $ReturnedUsers = @()
     
     Write-Host "OK !" -ForegroundColor Green
@@ -187,6 +187,8 @@ function Get-O365User {
         $ReturnedUser
         Write-Host "--------------------------------------------------------------------------------"
 
+        Read-Host "Appuyer sur Entrée pour revenir au menu"
+
     } 
     catch {
         Write-Host ""
@@ -209,7 +211,7 @@ function Get-O365Groups {
 
      Write-Host " -- Récupération de tous les groupes ... " -NoNewline
 
-    $Groups = Get-MsolGroup | Select-Object DisplayName,EmailAddress,Description,GroupType,ValidationStatus
+    $Groups = Get-MsolGroup | Select-Object DisplayName,EmailAddress,Description,GroupType,ValidationStatus | Sort-Object -Property DisplayName
     $ReturnedGroups = @()
 
     foreach ($Group in $Groups) {        
@@ -253,7 +255,7 @@ function Get-O365GroupsWithMembers {
 
     foreach ($Group in $Groups) {        
 
-        $Members = Get-MsolGroupMember -GroupObjectId $Group.ObjectID | Select-Object DisplayName, EmailAddress, GroupMemberType
+        $Members = Get-MsolGroupMember -GroupObjectId $Group.ObjectID | Select-Object DisplayName, EmailAddress, GroupMemberType | Sort-Object -Property DisplayName
 
         foreach ($Member in $Members) {
             $TempGroup = New-Object -TypeName PSObject
@@ -341,7 +343,7 @@ $Group = Read-Host " Entrez l'adresse mail de votre groupe "
             Start-Sleep -Seconds 2
         }
         else {
-            $Members = Get-MsolGroupMember -GroupObjectId $TempGroup.ObjectID | Select-Object DisplayName, EmailAddress
+            $Members = Get-MsolGroupMember -GroupObjectId $TempGroup.ObjectID | Select-Object DisplayName, EmailAddress | Sort-Object -Property DisplayName
 
             Write-Host ""
             Write-Host "--------------------------------------------------------------------------------"
@@ -379,7 +381,7 @@ function Get-O365O365Groups {
 
      Write-Host " -- Récupération de tous les groupes Office 365 ... " -NoNewline
 
-    $Groups = Get-UnifiedGroup | Select-Object DisplayName,PrimarySMTPAddress,Notes,SharePointSiteUrl,SharePointDocumentsUrl,SharePointNotebookUrl,GroupType
+    $Groups = Get-UnifiedGroup | Select-Object DisplayName,PrimarySMTPAddress,Notes,SharePointSiteUrl,SharePointDocumentsUrl,SharePointNotebookUrl,GroupType | Sort-Object -Property DisplayName
     $ReturnedGroups = @()
 
     foreach ($Group in $Groups) {        
@@ -425,7 +427,7 @@ function Get-O365O365GroupsWithMembers {
 
     foreach ($Group in $Groups) {        
 
-        $Members = Get-UnifiedGroupLinks -Identity $Group.DisplayName -LinkType Members | Select-Object Name, PrimarySMTPAddress
+        $Members = Get-UnifiedGroupLinks -Identity $Group.DisplayName -LinkType Members | Select-Object Name, PrimarySMTPAddress | Sort-Object -Property Name
 
         foreach ($Member in $Members) {
             $TempGroup = New-Object -TypeName PSObject
@@ -520,7 +522,7 @@ $Group = Read-Host " Entrez l'adresse mail ou le nom de votre groupe Office 365 
             Start-Sleep -Seconds 2
         }
         else {
-            $Members = Get-UnifiedGroupLinks -Identity $TempGroup.DisplayName -LinkType Members | Select-Object Name, PrimarySMTPAddress
+            $Members = Get-UnifiedGroupLinks -Identity $TempGroup.DisplayName -LinkType Members | Select-Object Name, PrimarySMTPAddress | Sort-Object -Property Name
 
 
             Write-Host ""

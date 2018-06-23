@@ -3,7 +3,7 @@
 # Menu d'accueil proposant de s'authentifier ou de quitter le programme
 #
 function Start-Menu  {
-    
+    Clear-Host
     Write-Host ""
     Write-Host " Office 365 Management Framework - Menu " -ForegroundColor Yellow
     Write-Host "----------------------------------------" -ForegroundColor Yellow
@@ -284,6 +284,7 @@ function Get-O365Credentials  {
         $Session = New-PSSession -ConfigurationName Microsoft.Exchange -ConnectionUri https://ps.outlook.com/powershell -Credential $O365Credentials -Authentication Basic -AllowRedirection  -ErrorAction Stop
         Import-PSSession $Session -AllowClobber -ErrorAction Stop | Out-Null
 
+        Clear-Host
         Start-O365Menu
 
     }
