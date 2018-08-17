@@ -8,7 +8,7 @@
     .PARAMETER UserIdentity
         Specify user email address
     .EXAMPLE
-        .\Add-UserToO365DistributionGroup -DistributionGoupName "Marketing Team" -Member "john.doe@mail.com"
+        .\Add-UserToO365DistributionGroup.ps1 -DistributionGoupName "Marketing Team" -Member "john.doe@mail.com"
     .NOTES
         Author : Sylver SCHORGEN
         Blog : http://microsofttouch.fr/default/b/sylver
