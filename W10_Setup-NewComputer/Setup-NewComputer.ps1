@@ -12,7 +12,7 @@
 #							  All the functions used in my script to configure Windows are from his script.
 #							  His full script turns off some unnecessary Windows 10 telemetery, bloatware, & privacy things
 #
-#		Modified by			: Sylver SCHORGEN (contact [a] schorgen.com)
+#		Modified by			: Sylver SCHORGEN (contact [at] schorgen.com)
 #		Last Modification	: 01-Aug-2018
 #		Version				: 1.0
 #
@@ -242,17 +242,6 @@ Function Uninstall-W10XPSPrinter {
 	" Microsoft XPS Document Writer removed `n" >> "windows_configuration.xml"
 }
 
-# Function used to install Hyper-V - Not applicable to Home
-Function Install-W10HyperV {
-	If ((Get-WmiObject -Class "Win32_OperatingSystem").Caption -like "*Server*") {
-		Install-WindowsFeature -Name "Hyper-V" -IncludeManagementTools -WarningAction SilentlyContinue | Out-Null
-	} Else {
-		Enable-WindowsOptionalFeature -Online -FeatureName "Microsoft-Hyper-V-All" -NoRestart -WarningAction SilentlyContinue | Out-Null
-	}
-
-	" Hyper-V installed `n" >> "windows_configuration.xml"
-}
-
 # Function used to uninstall Microsoft preinstalled Apps
 Function Uninstall-W10PresinstalledApps {
 	
@@ -367,6 +356,14 @@ Function Hide-W10TaskbarSearch {
 	" Search taskbar is now hidden `n" >> "windows_configuration.xml"
 }
 
+#Function used to create my folder structure
+Function New-MyFolder {
+	New-Item -Path c:\_me -ItemType Directory | Out-Null
+	New-Item -Path C:\_me\Documents -ItemType Directory | Out-Null
+	New-Item -Path C:\_me\GitHub -ItemType Directory | Out-Null
+	New-Item -Path C:\_me\VM -ItemType Directory | Out-Null
+}
+
 
 ######## MAIN ########
 #
@@ -376,7 +373,6 @@ Function Hide-W10TaskbarSearch {
 
 Install-Software
 
-Install-W10HyperV
 Disable-W10Hibernation
 Remove-W10StartMenuTiles
 Remove-W10FaxPrinter
@@ -389,5 +385,7 @@ Hide-W10TaskbarSearch
 Set-W10ExplorerToThisPC
 Set-W10ControlPanelCategories
 Hide-W10ExplorerRecentShortcuts
+
+New-MyFolder
 
 "********** END OF WINDOWS CONFIGURATION LOG **********" >> "windows_configuration.log"
