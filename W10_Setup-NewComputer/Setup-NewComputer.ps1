@@ -74,7 +74,18 @@ Function Install-Software {
 	Install-Module -Name AzureAD -Confirm:$false -Force
 	Install-Module MSOnline -Confirm:$false -Force
 	Install-Module SharePointPnPPowerShellOnline -Confirm:$false -Force
-	## todo -> Install Microsoft Online Services Sign-in Assistant : https://go.microsoft.com/fwlink/p/?LinkId=286152
+	
+	
+    $MsoidcliUrl = "https://download.microsoft.com/download/5/0/1/5017D39B-8E29-48C8-91A8-8D0E4968E6D4/en/msoidcli_64.msi"
+	$MsoidcliOutpath = "msoidcli.msi"
+    
+    Invoke-WebRequest -Uri $MsoidcliUrl -OutFile $MsoidcliOutpath
+
+    .\msoidcli.msi /quiet
+
+    Start-Sleep -Seconds 5
+    Remove-Item .\msoidcli.msi -Force
+	
 	" Installation of Git done `n" >> "software_installation.log"
 	" Installation of GitHub done `n" >> "software_installation.log"
 	" Installation of Visual Studio Code done `n" >> "software_installation.log"
